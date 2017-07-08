@@ -9,10 +9,15 @@ void flightVisualization::setup(){
     if(csv.load("airports.dat")) {
         // Output all data to log
         for(int i = 0; i < csv.getNumRows(); i++){
-            for(int j = 0; j < csv.getNumCols(); j++){
-                    cout << csv[i][j] << ", ";
-            }
-            cout << endl;
+//            for(int j = 0; j < csv.getNumCols(); j++){
+//                    cout << csv[i][j] << ", ";
+//            }
+//            cout << endl;
+            ofxCsvRow row = csv[i];
+            float latitude = row.getFloat(6);
+            float longitude = row.getFloat(7);
+            
+            cout << i << ": latitude = " << latitude << ", longitude = " << longitude << endl;
         }
     }
     
