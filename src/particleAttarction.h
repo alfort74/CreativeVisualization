@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 
-class ofApp : public ofBaseApp{
+class particleAttraction : public ofBaseApp{
 
 	public:
 		void setup();
@@ -20,5 +20,11 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-        
+    
+        int radius;
+        vector<ofVec2f> location;
+        vector<ofVec2f> velocity;
+        static const int MAX_NUM = 500;
+    
+		
 };
