@@ -22,8 +22,9 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         int radius;
-        ofVec2f location;
-        ofVec2f velocity;
+        vector<ofVec2f> location;
+        vector<ofVec2f> velocity;
+        static const int MAX_NUM = 500;
     
 		
 };
