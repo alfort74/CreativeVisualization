@@ -2,6 +2,7 @@
 #include "ofApp.h"
 #include "particleAttarction.h"
 #include "generativeArt.h"
+#include "guiCircle.h"
 
 //========================================================================
 int main( ){
@@ -10,6 +11,6 @@ int main( ){
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
 	// pass in width and height too:
-	ofRunApp(new particleAttraction());
+	ofRunApp(new guiCircle());
 
 }
