@@ -17,8 +17,12 @@ void generativeArt::update(){
 
 //--------------------------------------------------------------
 void generativeArt::draw(){
+        
+    // Draw randomwalker
     ofSetColor(255, 255, 255, 5);
-    walker.draw();
+    for (int i = 0; i < 100; i++){
+        walker[i].draw();
+    }
 }
 
 //--------------------------------------------------------------
