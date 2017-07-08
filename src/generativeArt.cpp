@@ -5,9 +5,7 @@ void generativeArt::setup(){
     ofBackground(0, 0, 0);
     ofSetFrameRate(60);
     
-    // Stop screen refreshing
     ofSetBackgroundAuto(false);
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
 }
 
 //--------------------------------------------------------------
@@ -17,9 +15,15 @@ void generativeArt::update(){
 
 //--------------------------------------------------------------
 void generativeArt::draw(){
-        
+    
+    // Fade out
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofSetColor(0, 0, 0, 3);
+    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+    
     // Draw randomwalker
-    ofSetColor(255, 255, 255, 5);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofSetColor(255, 255, 255, 10);
     for (int i = 0; i < 100; i++){
         walker[i].draw();
     }

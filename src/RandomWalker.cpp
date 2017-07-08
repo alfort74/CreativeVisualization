@@ -17,8 +17,8 @@ RandomWalker::RandomWalker(){
 
 void RandomWalker::draw() {
     for (int i = 0; i < 10; i++){
-        position.x += ofRandom(-1, 1.1) * speed;
-        position.y += ofRandom(-1, 1.05) * speed;
+        position.x += ofRandom(-1, 1) * speed;
+        position.y += ofRandom(-1, 1) * speed;
         
         if (position.x < 0){
             position.x = ofGetWidth();
