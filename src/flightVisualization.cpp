@@ -3,10 +3,7 @@
 //--------------------------------------------------------------
 void flightVisualization::setup(){
     ofBackground(0);
-    ofSetBackgroundAuto(false);
-    ofSetColor(255, 255, 255);
     ofSetCircleResolution(4);
-    ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, 50);
     // Display level of logs
     ofSetLogLevel("ofxCsv", OF_LOG_VERBOSE);
     // Load CSV file
@@ -32,6 +29,9 @@ void flightVisualization::draw(){
     ofSetColor(255, 255, 255);
     ofVec2f airportLoc;
     
+    ofPushMatrix();
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+    
     for(int i = 0; i < csv.getNumRows(); i++){
         ofxCsvRow row = csv[i];
         float latitude = row.getFloat(6);
@@ -51,8 +51,21 @@ void flightVisualization::draw(){
             ofSetColor(127);
         }
         
-        ofDrawCircle(airportLoc, 1.5);
+        // Calculate the position on sphere based on latitude and longitude
+        ofQuaternion latRot, longRot, spinQuat;
+        latRot.makeRotate(row.getFloat(6), 1, 0, 0);
+        longRot.makeRotate(row.getFloat(7), 0, 1, 0);
+        spinQuat.makeRotate(ofGetFrameNum(), 0, 1, 0);
+        
+        ofVec3f radius = ofVec3f(0, 0, ofGetHeight()/2.5);
+        ofVec3f worldPoint = latRot * longRot * spinQuat * radius;
+        
+        ofDrawCircle(worldPoint, 1.5);
     }
+    ofPopMatrix();
+    
+    ofSetColor(255);
+    ofDrawBitmapStringHighlight("fps = " + ofToString(ofGetFrameRate()), 20, 20);
 
 }
 
